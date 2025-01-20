@@ -9,6 +9,8 @@ app.use(body_parser.urlencoded({extended:true}));
 app.use(cors());
 
 const port=3000;
+const films= require('./roots/films');
+app.use('api', films);
 
 app.listen(port,()=>{console.log(`server is running on port ${port}`)});
 const connectDb=async()=>{
