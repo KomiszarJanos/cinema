@@ -8,14 +8,13 @@ app.use(body_parser.json());
 app.use(body_parser.urlencoded({extended:true}));
 app.use(cors());
 
+const films= require('./routes/film');
+app.use('/api', films);
 const port=3000;
-const films= require('./roots/films');
-app.use('api', films);
-
 app.listen(port,()=>{console.log(`server is running on port ${port}`)});
 const connectDb=async()=>{
     try { await mongoose.connect('mongodb://localhost:27017/cinema');
         console.log('connected');}
-    catch (error) {consolee.log(error); process.exit(1);}
+    catch (error) {console.log(error); process.exit(1);}
 };
 connectDb();
